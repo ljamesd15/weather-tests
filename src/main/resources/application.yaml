@@ -1,0 +1,9 @@
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+spring:
+  application:
+    name: weather-tests
+
+server:
+  port: 8081

@@ -1,0 +1,3 @@
+weather:
+  platform:
+    base-url: http://localhost:8080
