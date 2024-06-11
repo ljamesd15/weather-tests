@@ -9,8 +9,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClient;
-import org.springframework.web.reactive.function.BodyInserters;
 
+import static com.weather.tests.constants.ApiConstants.DELETE_WEATHER_DATA_PATH;
 import static com.weather.tests.constants.ApiConstants.SAVE_WEATHER_DATA_PATH;
 import static com.weather.tests.constants.ApiConstants.SEARCH_WEATHER_DATA_PATH;
 
@@ -42,5 +42,12 @@ public class WeatherPlatformClient {
                 .retrieve()
                 .toEntity(SaveWeatherDataResponse.class)
                 .getBody();
+    }
+
+    public void deleteWeatherData(String id) {
+        this.restClient.delete()
+                .uri(DELETE_WEATHER_DATA_PATH, id)
+                .retrieve()
+                .toBodilessEntity();
     }
 }
