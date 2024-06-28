@@ -1,6 +1,6 @@
 services:
   web:
-    container_name: weather-tests
+    container_name: weather-tests-local
     build:
       dockerfile: local.Dockerfile
     ports:

@@ -1,7 +1,30 @@
 FROM amazoncorretto:21-alpine
 
+RUN apk update \
+    && apk upgrade \
+    && apk add --no-cache bash \
+    && apk add iputils-ping \
+    && apk add git \
+    && apk add maven
+
 # Server port
 EXPOSE 8080
+
+ARG SPRING_PROFILES_ACTIVE
+
+RUN git clone https://github.com/ljamesd15/weather-model.git \
+    && cd weather-model/ \
+    && mvn clean package \
+    && mvn install:install-file \
+         -Dfile=./target/weather-model-1.0-SNAPSHOT.jar \
+         -DgroupId=com.weather \
+         -DartifactId=weather-model \
+         -Dversion=1.0-SNAPSHOT \
+         -Dpackaging=jar \
+         -DgeneratePom=true
+RUN git clone https://github.com/ljamesd15/weather-tests.git \
+    && cd weather-tests/ \
+    && mvn clean install -Dmaven.test.skip
 
 COPY --chown=appuser:appuser ./docker/entrypoint.sh /home/appuser/bin/
 COPY ./target /app
