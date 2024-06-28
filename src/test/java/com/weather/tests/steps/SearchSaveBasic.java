@@ -10,9 +10,7 @@ import io.cucumber.java.After;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.cucumber.spring.CucumberContextConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.ZonedDateTime;
 import java.util.HashSet;
@@ -23,8 +21,6 @@ import static com.weather.tests.fixtures.WeatherDataFixtures.SENSOR_METADATA_1;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-@CucumberContextConfiguration
-@SpringBootTest
 public class SearchSaveBasic {
 
     private SearchWeatherDataResponse searchWeatherDataResponse;

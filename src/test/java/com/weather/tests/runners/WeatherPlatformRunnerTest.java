@@ -1,18 +1,22 @@
 package com.weather.tests.runners;
 
-import io.cucumber.junit.Cucumber;
-import io.cucumber.junit.CucumberOptions;
-import io.cucumber.spring.CucumberContextConfiguration;
-import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.junit.platform.suite.api.ConfigurationParameter;
+import org.junit.platform.suite.api.ConfigurationParameters;
+import org.junit.platform.suite.api.IncludeEngines;
+import org.junit.platform.suite.api.SelectPackages;
+import org.junit.platform.suite.api.Suite;
 
-@RunWith(Cucumber.class)
-@CucumberContextConfiguration
-@CucumberOptions(
-        glue = "com.weather.tests.steps",
-        features = "src/test/resources/cucumber/features",
-        plugin = {"pretty", "json:target/cucumber-report.json"}
-)
-@SpringBootTest
+import static io.cucumber.junit.platform.engine.Constants.FEATURES_PROPERTY_NAME;
+import static io.cucumber.junit.platform.engine.Constants.GLUE_PROPERTY_NAME;
+import static io.cucumber.junit.platform.engine.Constants.PLUGIN_PROPERTY_NAME;
+
+@Suite
+@IncludeEngines("cucumber")
+@SelectPackages("com.weather.tests")
+@ConfigurationParameters({
+        @ConfigurationParameter(key = GLUE_PROPERTY_NAME, value = "com.weather.tests"),
+        @ConfigurationParameter(key = FEATURES_PROPERTY_NAME, value = "src/test/resources/cucumber/features"),
+        @ConfigurationParameter(key = PLUGIN_PROPERTY_NAME, value = "pretty")
+})
 public class WeatherPlatformRunnerTest {
 }
