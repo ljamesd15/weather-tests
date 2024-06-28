@@ -16,6 +16,8 @@ Or to when running the package step
 
 ## Building images
 
+To ensure you get the latest versions of all repos required to run the tests its recommend to use the ```--no-cache``` option when building the images.
+
 ### Local
 Local image building and running is done through docker compose
 ```$ docker compose build && docker compose up```
