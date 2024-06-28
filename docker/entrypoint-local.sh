@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-java -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=0.0.0.0:8001 -jar -Dspring.profiles.active=local ./weather-tests.jar
+cd weather-tests/
+mvn test
+
+# Uncomment to be able to attach and debug container
+# sleep infinity
