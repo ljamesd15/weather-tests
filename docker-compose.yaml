@@ -6,8 +6,5 @@ services:
     ports:
       - "8081:8081"
       - "8001:8001"
-    # Allows for using latest jar without rebuilding image every time
-    volumes:
-      - ./target:/app
     environment:
       SPRING_PROFILES_ACTIVE: local
