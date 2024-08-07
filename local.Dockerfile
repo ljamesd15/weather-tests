@@ -7,11 +7,12 @@ RUN apk update \
     && apk upgrade \
     && apk add --no-cache bash \
     && apk add iputils-ping \
+    && apk add curl \
     && apk add git \
     && apk add maven
 
 # Debug port
-EXPOSE 8001
+EXPOSE 8011
 # Server port
 EXPOSE 8081
 
